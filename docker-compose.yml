@@ -1,0 +1,33 @@
+services:
+  traffic-api:
+    container_name: traffic-api
+    build: ./traffic-api
+    ports:
+      - "8000:80"
+    volumes:
+      - ./traffic-api:/var/www/html
+    environment:
+      - APP_ENV=${APP_ENV}
+      - DATABASE_URL=${DATABASE_URL}
+    # depends_on:
+    #   - db
+
+  # frontend:
+  #   build: ./frontend
+  #   ports:
+  #     - "4200:4200"
+  #   volumes:
+  #     - ./frontend:/app
+  #   command: npm start
+
+  # db:
+  #   image: mysql:8.0
+  #   restart: always
+  #   environment:
+  #     MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+  #     MYSQL_DATABASE: ${MYSQL_DATABASE}
+  #     MYSQL_USER: ${MYSQL_USER}
+  #     MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+  #   ports:
+  #     - "3306:3306"
+
