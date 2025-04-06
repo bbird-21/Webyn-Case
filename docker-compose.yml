@@ -1,17 +1,55 @@
+networks:
+  app:
+    name: app
+    driver: bridge
+
+volumes:
+  db-data:
+    name: db-data
+    driver: local
 services:
   traffic-api:
     container_name: traffic-api
     build: ./traffic-api
     ports:
-      - "8000:80"
+      - "8000:8000"
     volumes:
       - ./traffic-api:/var/www/html
     environment:
       - APP_ENV=${APP_ENV}
-      - DATABASE_URL=${DATABASE_URL}
-    # depends_on:
-    #   - db
+      # - DATABASE_URL=${DATABASE_URL}
+    networks:
+      - app
+    depends_on:
+      - db
 
+  db:
+    container_name: db
+    image: mysql:latest
+    environment:
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+    volumes:
+      - db-data:/var/lib/mysql/
+    networks:
+      - app
+    ports:
+      - "3306:3306"
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "pg_isready",
+          "-U",
+          "$MYSQL_USER",
+          "-d",
+          "$MYSQL_PASSWORD"
+        ]
+      interval: 5s
+      timeout: 3s
+      retries: 5
   # frontend:
   #   build: ./frontend
   #   ports:
