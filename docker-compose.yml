@@ -15,8 +15,8 @@ services:
       - "8000:8000"
     volumes:
       - ./traffic-api:/var/www/html
-    environment:
-      - APP_ENV=${APP_ENV}
+    # environment:
+      # - APP_ENV=${APP_ENV}
       # - DATABASE_URL=${DATABASE_URL}
     networks:
       - app

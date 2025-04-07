@@ -2,7 +2,7 @@
 FROM php:8.3-fpm
 
 # Install dependencies needed for Symfony
-RUN apt-g·t update && apt-get install -y \
+RUN apt-get update && apt-get install -y \
     vim \
 	wget \
     git \

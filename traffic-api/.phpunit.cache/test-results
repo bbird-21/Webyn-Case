@@ -1,0 +1,1 @@
+{"version":1,"defects":{"App\\Tests\\Controller\\TrafficDataControllerTest::testTrafficEndpointReturnsData":8,"App\\Tests\\Service\\TrafficDataControllerTest::testSomething":5},"times":{"App\\Tests\\Controller\\TrafficDataControllerTest::testTrafficEndpointReturnsData":0.003,"App\\Tests\\Service\\TrafficDataControllerTest::testSomething":0.018}}

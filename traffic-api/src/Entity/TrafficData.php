@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\TrafficDataRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: TrafficDataRepository::class)]
 class TrafficData
@@ -14,12 +15,15 @@ class TrafficData
     private ?int $id = null;
 
     #[ORM\Column]
+    #[Groups(['traffic'])]
     private ?int $page_id = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups(['traffic'])]
     private ?string $page_url = null;
 
     #[ORM\Column]
+    #[Groups(['traffic'])]
     private ?int $traffic = null;
 
     public function getId(): ?int
