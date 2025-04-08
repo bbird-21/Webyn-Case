@@ -3,6 +3,7 @@
 .env
 traffic-api/.env
 traffic-api/.env.dev
+traffic-api/.env*
 
 /.env.local
 /.env.local.php
@@ -12,3 +13,50 @@ traffic-api/.env.dev
 /var/
 /vendor/
 ###< symfony/framework-bundle ###
+
+todo.md
+
+### Angular Project
+# See https://docs.github.com/get-started/getting-started-with-git/ignoring-files for more about ignoring files.
+
+# Compiled output
+dashboard/dist
+dashboard/tmp
+dashboard/out-tsc
+dashboard/bazel-out
+
+# Node
+dashboard/node_modules
+dashboard/npm-debug.log
+dashboard/yarn-error.log
+
+# IDEs and editors
+dashboard/.idea/
+dashboard/.project
+dashboard/.classpath
+dashboard/.c9/
+dashboard/*.launch
+dashboard/.settings/
+dashboard/*.sublime-workspace
+
+# Visual Studio Code
+dashboard/.vscode/*
+!dashboard/.vscode/settings.json
+!dashboard/.vscode/tasks.json
+!dashboard/.vscode/launch.json
+!dashboard/.vscode/extensions.json
+dashboard/.history/*
+
+# Miscellaneous
+dashboard/.angular/cache
+dashboard/.sass-cache/
+dashboard/connect.lock
+dashboard/coverage
+dashboard/libpeerconnection.log
+dashboard/testem.log
+dashboard/typings
+
+# System files
+dashboard/.DS_Store
+dashboard/Thumbs.db
+###

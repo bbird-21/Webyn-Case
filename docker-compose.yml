@@ -22,7 +22,17 @@ services:
       - app
     depends_on:
       - db
-
+  dashboard:
+    build: ./dashboard
+    container_name: dashboard
+    ports:
+      - '4200:4200'
+    volumes:
+      - ./dashboard:/usr/src/app
+    networks:
+      - app
+    depends_on:
+      - traffic-api
   db:
     container_name: db
     image: mysql:latest
@@ -50,22 +60,3 @@ services:
       interval: 5s
       timeout: 3s
       retries: 5
-  # frontend:
-  #   build: ./frontend
-  #   ports:
-  #     - "4200:4200"
-  #   volumes:
-  #     - ./frontend:/app
-  #   command: npm start
-
-  # db:
-  #   image: mysql:8.0
-  #   restart: always
-  #   environment:
-  #     MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
-  #     MYSQL_DATABASE: ${MYSQL_DATABASE}
-  #     MYSQL_USER: ${MYSQL_USER}
-  #     MYSQL_PASSWORD: ${MYSQL_PASSWORD}
-  #   ports:
-  #     - "3306:3306"
-
