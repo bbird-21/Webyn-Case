@@ -13,10 +13,18 @@ composer require symfony/serializer-pack
 # Install PHPUnit
 composer require --dev symfony/test-pack
 
-## Testing
+### Testing
 # Install BrowserKit and HttpClient:
 composer require --dev symfony/browser-kit symfony/http-client
-# Run Symfony's built-in server
 composer require --dev dama/doctrine-test-bundle
-##
+###
+
+### Database Configuration
+# php bin/console doctrine:database:create
+# php bin/console make:migration
+# php bin/console doctrine:migrations:migrate
+# php bin/console doctrine:fixtures:load
+###
+
+# Run Symfony's built-in server
 symfony serve --port=8000 --allow-all-ip
