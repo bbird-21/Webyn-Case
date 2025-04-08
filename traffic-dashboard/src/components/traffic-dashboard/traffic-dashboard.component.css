@@ -1,52 +1,162 @@
+/* src/app/components/traffic-dashboard/traffic-dashboard.component.css */
+
+/* Add padding around the component content */
+:host {
+	display: block;
+	padding: 20px 30px;
+	max-width: 1200px; /* Optional max width for content */
+	margin: 20px auto; /* Center component on page */
+  }
+
+/* Filter Section */
+.filter-section {
+	margin-bottom: 2em;
+	padding: 15px 20px;
+	background-color: #1e1e1e; /* Slightly different dark shade */
+	border: 1px solid #333;
+	border-radius: 6px;
+	display: flex;
+	align-items: center;
+	gap: 1em;
+	flex-wrap: wrap; /* Allow wrapping on smaller screens */
+}
+
+.filter-section label {
+	font-weight: 500; /* Medium font weight */
+	margin-right: 0.5em;
+	color: #bdbdbd; /* Slightly softer text */
+  }
+
+.filter-section input[type="number"] {
+	/* Inherits styles from global, can override here */
+	width: 180px;
+}
+
+  /* Chart Container */
+.chart-container {
+	position: relative;
+	height: 45vh; /* Adjust height */
+	min-height: 300px;
+	width: 100%; /* Make it responsive width */
+	background-color: #1e1e1e; /* Match filter bg */
+	padding: 20px;
+	border: 1px solid #333;
+	border-radius: 6px;
+	margin-top: 2em;
+	margin-bottom: 2.5em;
+}
+
+  /* Style for the "No data for chart" message */
+.chart-container p {
+	  position: absolute;
+	  top: 50%;
+	  left: 50%;
+	  transform: translate(-50%, -50%);
+	  text-align: center;
+	  padding: 1em;
+	  color: #777;
+	  font-style: italic;
+}
+
+  /* Loading & Error Messages */
+.loading-indicator,
+.error-message {
+	padding: 15px 20px;
+	margin: 1.5em 0;
+	border-radius: 6px;
+	text-align: center;
+}
+
+.loading-indicator {
+	background-color: #2a2a2a;
+	color: #bdbdbd;
+}
+
+.error-message {
+	background-color: #4a1c1f; /* Darker red background */
+	color: #f8d7da; /* Keep light text */
+	border: 1px solid #721c24; /* Darker red border */
+	display: flex; /* Align text and button */
+	justify-content: center;
+	align-items: center;
+	gap: 1em;
+}
+
+  /* Style retry button within error message */
+.error-message button {
+	  background-color: #721c24; /* Match border */
+	  color: #f8d7da;
+	  padding: 8px 15px;
+}
+.error-message button:hover:not(:disabled) {
+	  background-color: #8f2c35;
+}
+
+  /* Table Styles */
 .traffic-table {
 	width: 100%;
-	border-collapse: collapse;
+	border-collapse: collapse; /* Remove gaps between cells */
 	margin-top: 1em;
-	box-shadow: 0 2px 3px rgba(0,0,0,0.1);
-  }
+	border: 1px solid #333; /* Add subtle outer border */
+	border-radius: 6px; /* Optional: rounded corners for the table */
+	overflow: hidden; /* Needed for border-radius on table */
+}
 
-  .traffic-table th,
-  .traffic-table td {
-	border: 1px solid #ddd;
-	padding: 10px 12px;
+.traffic-table th,
+.traffic-table td {
+	border-bottom: 1px solid #333; /* Separator lines */
+	padding: 12px 15px; /* More padding */
 	text-align: left;
-  }
+	vertical-align: middle;
+}
 
-  .traffic-table th {
-	background-color: #f2f2f2;
-	font-weight: bold;
-	color: #333;
-  }
+.traffic-table th {
+	background-color: #2a2a2a; /* Dark header */
+	font-weight: 600; /* Bold header text */
+	color: #ffffff; /* White header text */
+	border-bottom-width: 2px; /* Thicker bottom border for header */
+	border-color: #444;
+}
 
-  .traffic-table tbody tr:nth-child(even) {
-	background-color: #f9f9f9;
-  }
+.traffic-table tbody tr {
+	 background-color: #1e1e1e; /* Slightly lighter than body bg */
+	 transition: background-color 0.15s ease-in-out; /* Smooth hover */
+}
 
-  .traffic-table tbody tr:hover {
-	background-color: #f1f1f1;
-  }
+/* Remove alternating row style or make it very subtle */
+/* .traffic-table tbody tr:nth-child(even) {
+	background-color: #222;
+} */
 
-  .loading-indicator,
-  .error-message {
-	padding: 1em;
-	margin-top: 1em;
-	border-radius: 4px;
-  }
+.traffic-table tbody tr:hover {
+	background-color: #333; /* Hover effect */
+}
 
-  .loading-indicator {
-	background-color: #e0e0e0;
-	color: #333;
+  /* Remove border from last row's cells */
+.traffic-table tbody tr:last-child td {
+	  border-bottom: none;
+}
+
+  /* "No data" message for table */
+.no-records-message { /* Add this class to the <p> tag if needed */
 	text-align: center;
-  }
+	padding: 2em;
+	color: #777;
+	font-style: italic;
+	background-color: #1e1e1e;
+	border: 1px solid #333;
+	border-radius: 6px;
+	margin-top: 1em;
+}
 
-  .error-message {
-	background-color: #f8d7da;
-	color: #721c24;
-	border: 1px solid #f5c6cb;
-  }
+/* Adjust heading margins if needed */
+h2 {
+	  margin-bottom: 1em;
+	  border-bottom: 1px solid #444;
+	  padding-bottom: 0.4em;
+}
 
-  .error-message button {
-	  margin-left: 1em;
-	  padding: 0.3em 0.8em;
-	  cursor: pointer;
-  }
+h3 {
+	  margin-top: 2em;
+	  color: #bdbdbd; /* Softer color for sub-heading */
+}

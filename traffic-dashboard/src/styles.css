@@ -1,0 +1,75 @@
+/* src/styles.css */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap'); /* Example: Using Inter font */
+
+html {
+  height: 100%;
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', sans-serif; /* Apply modern font */
+  background-color: #121212; /* Dark background */
+  color: #e0e0e0; /* Light default text color */
+  min-height: 100vh; /* Ensure background covers full height */
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #ffffff; /* Brighter white for headings */
+  margin-top: 1.5em;
+  margin-bottom: 0.8em;
+}
+
+a {
+  color: #64b5f6; /* A nice blue for links on dark background */
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Basic Button Styling (Optional - customize as needed) */
+button {
+  padding: 10px 18px;
+  border: none;
+  border-radius: 4px;
+  background-color: #333;
+  color: #e0e0e0;
+  cursor: pointer;
+  font-size: 0.95em;
+  transition: background-color 0.2s ease;
+}
+
+button:hover:not(:disabled) {
+  background-color: #444;
+}
+
+button:disabled {
+    background-color: #2a2a2a;
+    color: #666;
+    cursor: not-allowed;
+}
+
+/* Input field defaults (can be overridden in components) */
+input[type="text"],
+input[type="number"],
+input[type="email"],
+textarea {
+    background-color: #2a2a2a;
+    color: #e0e0e0;
+    border: 1px solid #444;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+input:focus, textarea:focus {
+    outline: none;
+    border-color: #64b5f6; /* Highlight focus */
+}

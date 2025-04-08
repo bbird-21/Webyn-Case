@@ -1,4 +1,17 @@
-<h2>Website Traffic</h2>
+<h3>Filter</h3>
+
+<!-- Filter Input -->
+<div class="filter-section">
+  <label for="thresholdInput">Show pages with traffic above:</label>
+  <input
+    id="thresholdInput"
+    type="number"
+    min="0"
+    placeholder="Enter threshold..."
+    [value]="thresholdSubject.value"
+    (input)="onThresholdChange($event)"
+  >
+</div>
 
 <!-- Loading Indicator -->
 <div *ngIf="isLoading$ | async" class="loading-indicator">
@@ -12,10 +25,10 @@
 </div>
 
 <!-- Data Table -->
-<!-- Use *ngIf with the async pipe result to handle the data stream -->
-<ng-container *ngIf="(trafficData$ | async) as trafficData; else noData">
-  <div *ngIf="!(isLoading$ | async) && !(error$ | async)">
-    <table class="traffic-table" *ngIf="trafficData.length > 0; else noTrafficRecords">
+<ng-container *ngIf="{ data: filteredTrafficData$ | async, loading: isLoading$ | async, error: error$ | async } as state">
+  <div *ngIf="!state.loading && !state.error && state.data">
+    <h3 style="margin-top: 2em;">Data Table</h3> <!-- Add heading for clarity -->
+    <table class="traffic-table" *ngIf="state.data.length > 0; else noTrafficRecords">
       <thead>
         <tr>
           <th>Page URL</th>
@@ -23,23 +36,21 @@
         </tr>
       </thead>
       <tbody>
-        <!-- Loop through the data using *ngFor -->
-        <tr *ngFor="let item of trafficData">
+        <tr *ngFor="let item of state.data">
           <td>{{ item.page_url }}</td>
-          <td>{{ item.traffic | number }}</td> <!-- Use number pipe for formatting -->
+          <td>{{ item.traffic | number }}</td>
         </tr>
       </tbody>
     </table>
-
-    <!-- Message when data array is empty -->
     <ng-template #noTrafficRecords>
-      <p>No traffic records found.</p>
+      <p>No traffic records match the current filter.</p>
     </ng-template>
   </div>
 </ng-container>
 
-<!-- Template shown initially or if trafficData$ emits nothing (e.g., after error with EMPTY) -->
-<ng-template #noData>
-    <!-- You might want to hide this if loading or error is shown -->
-    <!-- <p>No data available yet.</p> -->
-</ng-template>
+<!-- Chart Canvas -->
+<!-- Add a container for potential styling -->
+<div class="chart-container" *ngIf="!(isLoading$ | async) && !(error$ | async)">
+  <canvas id="trafficChartCanvas" #trafficChartCanvas></canvas>
+  <!-- Message shown if no data for chart -->
+</div>
