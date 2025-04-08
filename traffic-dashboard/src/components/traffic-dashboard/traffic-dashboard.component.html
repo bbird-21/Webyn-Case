@@ -1,0 +1,45 @@
+<h2>Website Traffic</h2>
+
+<!-- Loading Indicator -->
+<div *ngIf="isLoading$ | async" class="loading-indicator">
+  Loading traffic data...
+</div>
+
+<!-- Error Message -->
+<div *ngIf="error$ | async as errorMessage" class="error-message">
+  <p>Error: {{ errorMessage }}</p>
+  <button (click)="retryLoad()">Retry</button>
+</div>
+
+<!-- Data Table -->
+<!-- Use *ngIf with the async pipe result to handle the data stream -->
+<ng-container *ngIf="(trafficData$ | async) as trafficData; else noData">
+  <div *ngIf="!(isLoading$ | async) && !(error$ | async)">
+    <table class="traffic-table" *ngIf="trafficData.length > 0; else noTrafficRecords">
+      <thead>
+        <tr>
+          <th>Page URL</th>
+          <th>Traffic Count</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Loop through the data using *ngFor -->
+        <tr *ngFor="let item of trafficData">
+          <td>{{ item.page_url }}</td>
+          <td>{{ item.traffic | number }}</td> <!-- Use number pipe for formatting -->
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Message when data array is empty -->
+    <ng-template #noTrafficRecords>
+      <p>No traffic records found.</p>
+    </ng-template>
+  </div>
+</ng-container>
+
+<!-- Template shown initially or if trafficData$ emits nothing (e.g., after error with EMPTY) -->
+<ng-template #noData>
+    <!-- You might want to hide this if loading or error is shown -->
+    <!-- <p>No data available yet.</p> -->
+</ng-template>

@@ -15,20 +15,20 @@ services:
       - "8000:8000"
     volumes:
       - ./traffic-api:/var/www/html
-    # environment:
-      # - APP_ENV=${APP_ENV}
+    environment:
+      - APP_ENV=${APP_ENV}
       # - DATABASE_URL=${DATABASE_URL}
     networks:
       - app
     depends_on:
       - db
   dashboard:
-    build: ./dashboard
-    container_name: dashboard
+    build: ./traffic-dashboard
+    container_name: traffic-dashboard
     ports:
       - '4200:4200'
     volumes:
-      - ./dashboard:/usr/src/app
+      - ./traffic-dashboard:/usr/src/app
     networks:
       - app
     depends_on:
@@ -36,6 +36,7 @@ services:
   db:
     container_name: db
     image: mysql:latest
+    # entrypoint: ["sh", "start_sql.sh"]
     environment:
       MYSQL_DATABASE: ${MYSQL_DATABASE}
       MYSQL_USER: ${MYSQL_USER}

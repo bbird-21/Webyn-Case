@@ -1,0 +1,52 @@
+.traffic-table {
+	width: 100%;
+	border-collapse: collapse;
+	margin-top: 1em;
+	box-shadow: 0 2px 3px rgba(0,0,0,0.1);
+  }
+
+  .traffic-table th,
+  .traffic-table td {
+	border: 1px solid #ddd;
+	padding: 10px 12px;
+	text-align: left;
+  }
+
+  .traffic-table th {
+	background-color: #f2f2f2;
+	font-weight: bold;
+	color: #333;
+  }
+
+  .traffic-table tbody tr:nth-child(even) {
+	background-color: #f9f9f9;
+  }
+
+  .traffic-table tbody tr:hover {
+	background-color: #f1f1f1;
+  }
+
+  .loading-indicator,
+  .error-message {
+	padding: 1em;
+	margin-top: 1em;
+	border-radius: 4px;
+  }
+
+  .loading-indicator {
+	background-color: #e0e0e0;
+	color: #333;
+	text-align: center;
+  }
+
+  .error-message {
+	background-color: #f8d7da;
+	color: #721c24;
+	border: 1px solid #f5c6cb;
+  }
+
+  .error-message button {
+	  margin-left: 1em;
+	  padding: 0.3em 0.8em;
+	  cursor: pointer;
+  }
