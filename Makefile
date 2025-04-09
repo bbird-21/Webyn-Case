@@ -17,7 +17,7 @@ SECRET=$$(openssl rand -hex 32)
 .PHONY: all
 all: build up
 
-env_setup: setup-compose-env setup-backend-env
+env: setup-compose-env setup-backend-env
 
 .PHONY: build
 build:
