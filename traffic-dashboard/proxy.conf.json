@@ -1,6 +1,6 @@
 {
 	"/api/traffic": {
-	  "target": "https://traffic-api:8000",
+	  "target": "http://traffic-api:8000",
 	  "secure": false,
 	  "changeOrigin": true,
 	  "logLevel": "debug"

@@ -27,4 +27,4 @@ php bin/console doctrine:fixtures:load --no-interaction
 ###
 
 # Run Symfony's built-in server
-symfony serve --port=8000 --allow-all-ip
+symfony serve --port=8000 --allow-all-ip --no-tls
