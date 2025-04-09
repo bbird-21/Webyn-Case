@@ -19,11 +19,6 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 RUN wget https://get.symfony.com/cli/installer -O - | bash
 RUN mv /root/.symfony5/bin/symfony /usr/local/bin/symfony
 
-# Creates a local certificate authority
-RUN symfony server:ca:install
-# Forces the OS inside the container image to recognize the newly installed CA certificate system-wide during the build.
-RUN update-ca-certificates
-
 # Define ARG for user/group ID
 ARG PUID=1000
 ARG PGID=1000
