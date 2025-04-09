@@ -1,0 +1,14 @@
+[
+    {
+        "version": "8.3.19",
+        "path": "/usr/local",
+        "php_path": "/usr/local/bin/php",
+        "fpm_path": "/usr/local/sbin/php-fpm",
+        "cgi_path": "",
+        "php_config_path": "/usr/local/bin/php-config",
+        "phpize_path": "/usr/local/bin/phpize",
+        "phpdbg_path": "",
+        "is_system": true,
+        "frankenphp": false
+    }
+]

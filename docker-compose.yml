@@ -11,13 +11,14 @@ services:
   traffic-api:
     container_name: traffic-api
     build: ./traffic-api
+    user: "${HOST_UID:-1000}:${HOST_GID:-1000}"
+    # working_dir: /app
     ports:
       - "8000:8000"
     volumes:
       - ./traffic-api:/var/www/html
     environment:
-      APP_ENV: ${APP_ENV}
-      DATABASE_URL: ${DATABASE_URL}
+      - HOME=/var/www/html
     networks:
       - app
     depends_on:
@@ -25,6 +26,7 @@ services:
   dashboard:
     build: ./traffic-dashboard
     container_name: traffic-dashboard
+    user: "${HOST_UID:-1000}:${HOST_GID:-1000}"
     ports:
       - '4200:4200'
     volumes:

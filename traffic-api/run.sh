@@ -1,7 +1,7 @@
 # !/bin/sh
 
 # Install Symfony dependencies using Composer
-composer install --no-dev --optimize-autoloader
+composer install --optimize-autoloader
 # Install and enable MakerBundle
 composer require symfony/maker-bundle --dev
 # Install Doctrine support
@@ -20,10 +20,10 @@ composer require --dev dama/doctrine-test-bundle
 ###
 
 ### Database Configuration
-php bin/console doctrine:database:create -n
-php bin/console make:migration -n
-php bin/console doctrine:migrations:migrate -n
-php bin/console doctrine:fixtures:load -n
+php bin/console doctrine:database:create --if-not-exists
+php bin/console make:migration --no-interaction
+php bin/console doctrine:migrations:migrate --no-interaction
+php bin/console doctrine:fixtures:load --no-interaction
 ###
 
 # Run Symfony's built-in server

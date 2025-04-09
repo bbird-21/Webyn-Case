@@ -21,6 +21,16 @@ RUN mv /root/.symfony5/bin/symfony /usr/local/bin/symfony
 
 # Creates a local certificate authority
 RUN symfony server:ca:install
+# Forces the OS inside the container image to recognize the newly installed CA certificate system-wide during the build.
+RUN update-ca-certificates
+
+# Define ARG for user/group ID
+ARG PUID=1000
+ARG PGID=1000
+
+# Change ownership of the config/certs created by root during build
+RUN chown -R ${PUID}:${PGID} /root/.symfony5
+
 # Set the working directory to the Symfony project
 WORKDIR /var/www/html
 
@@ -32,4 +42,3 @@ EXPOSE 8000
 
 # Run Symfony's built-in server
 ENTRYPOINT ["sh", "run.sh"]
-# CMD [ "tail", "-f"]
