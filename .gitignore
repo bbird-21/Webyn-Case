@@ -15,6 +15,9 @@ traffic-api/.env.test
 ###< symfony/framework-bundle ###
 
 todo.md
+### Symfony Project
+traffic-api/.composer
+traffic-api/.symfony5
 
 ### Angular Project
 # See https://docs.github.com/get-started/getting-started-with-git/ignoring-files for more about ignoring files.

@@ -12,7 +12,6 @@ services:
     container_name: traffic-api
     build: ./traffic-api
     user: "${HOST_UID:-1000}:${HOST_GID:-1000}"
-    # working_dir: /app
     ports:
       - "8000:8000"
     volumes:

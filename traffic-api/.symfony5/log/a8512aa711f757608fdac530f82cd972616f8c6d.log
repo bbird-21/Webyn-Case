@@ -1,9 +1,0 @@
-{"level":"debug","source":"server","source":"PHP","time":"2025-04-09T18:23:00Z","message":"Reloading PHP versions"}
-{"level":"debug","source":"server","source":"PHP","time":"2025-04-09T18:23:00Z","message":"Using PHP version 8.3.19 (from default version in $PATH)"}
-{"level":"info","source":"server","source":"PHP","php":"8.3.19","path":"/usr/local/sbin/php-fpm","port":34359,"time":"2025-04-09T18:23:00Z","message":"listening"}
-{"level":"debug","source":"server","source":"PHP","php":"8.3.19","path":"/usr/local/sbin/php-fpm","source":"PHP","time":"2025-04-09T18:23:00Z","message":"Using PHP version 8.3.19 (from default version in $PATH)"}
-{"level":"info","source":"server","ip":"172.18.0.1","status":200,"method":"GET","scheme":"https","host":"localhost:8000","time":"2025-04-09T18:23:24Z","message":"/api/traffic"}
-{"level":"info","source":"server","ip":"172.18.0.4","status":200,"method":"GET","scheme":"https","host":"traffic-api:8000","time":"2025-04-09T18:23:46Z","message":"/api/traffic"}
-{"level":"info","source":"server","ip":"172.18.0.4","status":200,"method":"GET","scheme":"https","host":"traffic-api:8000","time":"2025-04-09T18:23:46Z","message":"/api/traffic"}
-{"level":"info","source":"server","ip":"172.18.0.4","status":200,"method":"GET","scheme":"https","host":"traffic-api:8000","time":"2025-04-09T18:23:47Z","message":"/api/traffic"}
-{"level":"info","source":"server","ip":"172.18.0.4","status":200,"method":"GET","scheme":"https","host":"traffic-api:8000","time":"2025-04-09T18:23:47Z","message":"/api/traffic"}
