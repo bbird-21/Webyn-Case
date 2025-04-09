@@ -7,13 +7,13 @@ import { AsyncPipe, NgFor, NgIf, DecimalPipe } from '@angular/common'; // Common
 import { Observable, BehaviorSubject, EMPTY, combineLatest, Subject } from 'rxjs'; // RxJS essentials
 import { catchError, tap, map, startWith, takeUntil, delay } from 'rxjs/operators'; // RxJS operators
 
-// Import Chart.js (use Chart and registerables for v3+)
+// Import Chart.js
 import { Chart, registerables, ChartConfiguration, ChartData } from 'chart.js';
 
-import { TrafficService } from '../../services/traffic.service'; // Adjust path if needed
-import { TrafficData } from '../../models/traffic-data.model'; // Adjust path if needed
+import { TrafficService } from '../../services/traffic.service';
+import { TrafficData } from '../../models/traffic-data.model';
 
-// Register Chart.js components (do this once)
+// Register Chart.js components
 Chart.register(...registerables);
 
 @Component({
@@ -78,7 +78,7 @@ export class TrafficDashboardComponent implements OnInit, OnDestroy, AfterViewIn
     // Clean up subscriptions and resources to prevent memory leaks
     this.destroy$.next(); // Signal subscribers to complete
     this.destroy$.complete();
-    this.destroyChart(); // Explicitly destroy the Chart.js instance
+    this.destroyChart();
   }
 
   // --- Data Handling Methods ---
@@ -87,7 +87,7 @@ export class TrafficDashboardComponent implements OnInit, OnDestroy, AfterViewIn
     this.loadingSubject.next(true); // Set loading state
     this.errorSubject.next(null);   // Clear previous errors
 
-    // 1. Define the raw data stream from the API
+    // Define the raw data stream from the API
     this.rawTrafficData$ = this.trafficService.getTrafficData().pipe(
       tap(() => this.loadingSubject.next(false)), // Stop loading on success
       catchError(err => {
@@ -99,7 +99,7 @@ export class TrafficDashboardComponent implements OnInit, OnDestroy, AfterViewIn
       takeUntil(this.destroy$) // Ensure unsubscription when component is destroyed
     );
 
-    // 2. Define the filtered data stream based on raw data and threshold
+    // Define the filtered data stream based on raw data and threshold
     this.filteredTrafficData$ = combineLatest([
       // Use startWith to provide an initial empty array, ensuring combineLatest emits immediately
       // and handles cases where the API call fails or is slow.
@@ -144,7 +144,7 @@ export class TrafficDashboardComponent implements OnInit, OnDestroy, AfterViewIn
    * @param data The traffic data to display (already filtered).
    */
   createOrUpdateChart(data: TrafficData[]): void {
-    // 1. Ensure the canvas element reference is valid
+    // Ensure the canvas element reference is valid
     if (!this.trafficChartCanvas?.nativeElement) {
       console.error('Chart canvas reference not found. Cannot create/update chart.');
       return; // Exit if canvas isn't available
@@ -152,20 +152,20 @@ export class TrafficDashboardComponent implements OnInit, OnDestroy, AfterViewIn
     const canvas = this.trafficChartCanvas.nativeElement;
     const ctx = canvas.getContext('2d');
 
-    // 2. Ensure the canvas context is available
+    // Ensure the canvas context is available
     if (!ctx) {
       console.error('Failed to get 2D context from canvas.');
       return; // Exit if context cannot be obtained
     }
 
-    // 3. Handle empty data: Destroy old chart and don't draw a new one
+    // Handle empty data: Destroy old chart and don't draw a new one
     if (!data || data.length === 0) {
         // console.log('No data to display in chart. Destroying previous instance if any.');
         this.destroyChart(); // Clean up any existing chart
         return; // Exit function
     }
 
-    // 4. Prepare data in the format Chart.js expects
+    // Prepare data in the format Chart.js expects
     const labels = data.map(item => item.page_url);
     const trafficCounts = data.map(item => item.traffic);
 
@@ -182,23 +182,23 @@ export class TrafficDashboardComponent implements OnInit, OnDestroy, AfterViewIn
         }]
     };
 
-    // 5. Define chart configuration (type, data, options) with dark theme adjustments
+    // Define chart configuration (type, data, options) with dark theme adjustments
     const config: ChartConfiguration = {
         type: 'bar', // Choose chart type ('bar', 'line', 'pie', etc.)
         data: chartData,
         options: {
-            responsive: true, // Make chart resize with container
+            responsive: true,
             maintainAspectRatio: false, // Allow custom aspect ratio via CSS height/width
             scales: { // Configure axes for dark theme
                 y: {
-                    beginAtZero: true, // Start Y axis at 0
+                    beginAtZero: true,
                     title: {
                       display: true,
                       text: 'Traffic Count',
                       color: '#bdbdbd' // Light grey axis title
                     },
                     ticks: {
-                        color: '#bdbdbd' // Light grey axis labels (ticks)
+                        color: '#bdbdbd'
                     },
                     grid: {
                         color: 'rgba(255, 255, 255, 0.1)' // Subtle light grid lines
@@ -208,13 +208,12 @@ export class TrafficDashboardComponent implements OnInit, OnDestroy, AfterViewIn
                     title: {
                       display: true,
                       text: 'Page URL',
-                      color: '#bdbdbd' // Light grey axis title
+                      color: '#bdbdbd'
                     },
                     ticks: {
-                        color: '#bdbdbd' // Light grey axis labels (ticks)
+                        color: '#bdbdbd'
                     },
                     grid: {
-                        // Make vertical grid lines very subtle or disable if preferred
                         color: 'rgba(255, 255, 255, 0.05)'
                     }
                 }
@@ -231,17 +230,17 @@ export class TrafficDashboardComponent implements OnInit, OnDestroy, AfterViewIn
                     enabled: true,
                     backgroundColor: 'rgba(0, 0, 0, 0.8)', // Dark tooltip background
                     titleColor: '#ffffff', // White tooltip title
-                    bodyColor: '#e0e0e0'   // Light grey tooltip body text
+                    bodyColor: '#e0e0e0'
                 }
             }
         }
     };
 
-    // 6. Destroy any previous chart instance before creating a new one
+    // Destroy any previous chart instance before creating a new one
     // console.log('Attempting to destroy previous chart instance...');
     this.destroyChart();
 
-    // 7. Create the new chart instance
+    // Create the new chart instance
     try {
        // console.log('Creating new chart instance...');
        this.chartInstance = new Chart(ctx, config);
@@ -271,7 +270,6 @@ export class TrafficDashboardComponent implements OnInit, OnDestroy, AfterViewIn
    */
   onThresholdChange(event: Event): void {
     const inputElement = event.target as HTMLInputElement;
-    // Use parseInt for whole numbers, or parseFloat if decimals are possible/needed
     const value = parseInt(inputElement.value, 10);
     // Update the subject, defaulting to 0 if input is invalid (NaN)
     this.thresholdSubject.next(isNaN(value) ? 0 : value);
@@ -281,7 +279,6 @@ export class TrafficDashboardComponent implements OnInit, OnDestroy, AfterViewIn
    * Initiates a reload of the traffic data.
    */
   retryLoad(): void {
-    // Optionally reset filter on retry: this.thresholdSubject.next(0);
     this.loadAndFilterTrafficData();
   }
 }

@@ -4,7 +4,7 @@
 :host {
 	display: block;
 	padding: 20px 30px;
-	max-width: 1200px; /* Optional max width for content */
+	max-width: 1200px;
 	margin: 20px auto; /* Center component on page */
   }
 
@@ -18,7 +18,7 @@
 	display: flex;
 	align-items: center;
 	gap: 1em;
-	flex-wrap: wrap; /* Allow wrapping on smaller screens */
+	flex-wrap: wrap;
 }
 
 .filter-section label {
@@ -35,10 +35,10 @@
   /* Chart Container */
 .chart-container {
 	position: relative;
-	height: 45vh; /* Adjust height */
+	height: 45vh;
 	min-height: 300px;
-	width: 100%; /* Make it responsive width */
-	background-color: #1e1e1e; /* Match filter bg */
+	width: 100%;
+	background-color: #1e1e1e;
 	padding: 20px;
 	border: 1px solid #333;
 	border-radius: 6px;
@@ -73,10 +73,10 @@
 }
 
 .error-message {
-	background-color: #4a1c1f; /* Darker red background */
-	color: #f8d7da; /* Keep light text */
-	border: 1px solid #721c24; /* Darker red border */
-	display: flex; /* Align text and button */
+	background-color: #4a1c1f;
+	color: #f8d7da;
+	border: 1px solid #721c24;
+	display: flex;
 	justify-content: center;
 	align-items: center;
 	gap: 1em;
@@ -84,7 +84,7 @@
 
   /* Style retry button within error message */
 .error-message button {
-	  background-color: #721c24; /* Match border */
+	  background-color: #721c24;
 	  color: #f8d7da;
 	  padding: 8px 15px;
 }
@@ -97,30 +97,30 @@
 	width: 100%;
 	border-collapse: collapse; /* Remove gaps between cells */
 	margin-top: 1em;
-	border: 1px solid #333; /* Add subtle outer border */
-	border-radius: 6px; /* Optional: rounded corners for the table */
-	overflow: hidden; /* Needed for border-radius on table */
+	border: 1px solid #333;
+	border-radius: 6px;
+	overflow: hidden;
 }
 
 .traffic-table th,
 .traffic-table td {
 	border-bottom: 1px solid #333; /* Separator lines */
-	padding: 12px 15px; /* More padding */
+	padding: 12px 15px;
 	text-align: left;
 	vertical-align: middle;
 }
 
 .traffic-table th {
-	background-color: #2a2a2a; /* Dark header */
-	font-weight: 600; /* Bold header text */
-	color: #ffffff; /* White header text */
-	border-bottom-width: 2px; /* Thicker bottom border for header */
+	background-color: #2a2a2a;
+	font-weight: 600;
+	color: #ffffff;
+	border-bottom-width: 2px;
 	border-color: #444;
 }
 
 .traffic-table tbody tr {
-	 background-color: #1e1e1e; /* Slightly lighter than body bg */
-	 transition: background-color 0.15s ease-in-out; /* Smooth hover */
+	 background-color: #1e1e1e;
+	 transition: background-color 0.15s ease-in-out;
 }
 
 /* Remove alternating row style or make it very subtle */
@@ -129,7 +129,7 @@
 } */
 
 .traffic-table tbody tr:hover {
-	background-color: #333; /* Hover effect */
+	background-color: #333;
 }
 
   /* Remove border from last row's cells */
@@ -138,7 +138,7 @@
 }
 
   /* "No data" message for table */
-.no-records-message { /* Add this class to the <p> tag if needed */
+.no-records-message {
 	text-align: center;
 	padding: 2em;
 	color: #777;
@@ -149,7 +149,6 @@
 	margin-top: 1em;
 }
 
-/* Adjust heading margins if needed */
 h2 {
 	  margin-bottom: 1em;
 	  border-bottom: 1px solid #444;
@@ -158,5 +157,5 @@ h2 {
 
 h3 {
 	  margin-top: 2em;
-	  color: #bdbdbd; /* Softer color for sub-heading */
+	  color: #bdbdbd;
 }

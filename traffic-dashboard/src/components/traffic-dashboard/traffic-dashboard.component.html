@@ -49,7 +49,6 @@
 </ng-container>
 
 <!-- Chart Canvas -->
-<!-- Add a container for potential styling -->
 <div class="chart-container" *ngIf="!(isLoading$ | async) && !(error$ | async)">
   <canvas id="trafficChartCanvas" #trafficChartCanvas></canvas>
   <!-- Message shown if no data for chart -->

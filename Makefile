@@ -85,7 +85,6 @@ setup-compose-env:
 		echo "    Copied $(ROOT_ENV_EXAMPLE) to $(ROOT_ENV) and added HOST_UID/HOST_GID."; \
 	else \
 		echo "    $(ROOT_ENV) already exists, skipping creation."; \
-		# Check if HOST_UID/GID are missing and add if needed (optional enhancement) \
 		if ! grep -q "^HOST_UID=" "$(ROOT_ENV)"; then echo "HOST_UID=$$(id -u)" >> "$(ROOT_ENV)"; echo "    Added missing HOST_UID."; fi; \
 		if ! grep -q "^HOST_GID=" "$(ROOT_ENV)"; then echo "HOST_GID=$$(id -g)" >> "$(ROOT_ENV)"; echo "    Added missing HOST_GID."; fi; \
 	fi

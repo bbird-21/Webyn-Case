@@ -3,14 +3,13 @@ import { TrafficDashboardComponent } from '../components/traffic-dashboard/traff
 
 export const routes: Routes = [
     {
-        path: 'dashboard', // Or '' for the default route
-        component: TrafficDashboardComponent // <-- Use the component here
+        path: 'dashboard',
+        component: TrafficDashboardComponent
     },
-    // Add other routes here
     {
-        path: '', // Example redirect to dashboard
+        path: '',
         redirectTo: '/dashboard',
         pathMatch: 'full'
     }
-    // { path: '**', component: PageNotFoundComponent }, // Optional: 404 route
+    // { path: '**', component: PageNotFoundComponent },
 ];

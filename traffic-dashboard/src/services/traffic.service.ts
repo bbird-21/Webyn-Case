@@ -2,16 +2,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
-import { TrafficData } from '../models/traffic-data.model'; // Adjust path if needed
+import { TrafficData } from '../models/traffic-data.model';
 
 @Injectable({
-  providedIn: 'root' // Provided globally, no need to add to AppModule providers
+  providedIn: 'root'
 })
 export class TrafficService {
 
-  // IMPORTANT: Adjust this URL if your API is hosted elsewhere
-  // or if you are using a proxy configuration.
-  private apiUrl = '/api/traffic'; // Assumes same origin or proxy
+  private apiUrl = '/api/traffic';
 
   constructor(private http: HttpClient) { }
 
@@ -34,7 +32,6 @@ export class TrafficService {
       errorMessage = `Error: ${error.error.message}`;
     } else {
       // Backend returned an unsuccessful response code
-      // The response body may contain clues as to what went wrong
       errorMessage = `Server returned code: ${error.status}, error message is: ${error.message}`;
       if (error.error && typeof error.error === 'string') {
          errorMessage += `\nServer Error Details: ${error.error}`;
@@ -42,7 +39,8 @@ export class TrafficService {
          errorMessage += `\nServer Error Details: ${JSON.stringify(error.error)}`;
       }
     }
-    console.error('Error fetching traffic data:', error); // Log the detailed error
-    return throwError(() => new Error(errorMessage)); // Return an observable error
+    // Return an observable error
+    console.error('Error fetching traffic data:', error);
+    return throwError(() => new Error(errorMessage));
   }
 }
