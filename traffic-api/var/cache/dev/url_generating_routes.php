@@ -4,8 +4,6 @@
 
 return [
     '_preview_error' => [['code', '_format'], ['_controller' => 'error_controller::preview', '_format' => 'html'], ['code' => '\\d+'], [['variable', '.', '[^/]++', '_format', true], ['variable', '/', '\\d+', 'code', true], ['text', '/_error']], [], [], []],
-    'app_awesome_api' => [[], ['_controller' => 'App\\Controller\\AwesomeApiController::index'], [], [['text', '/awesome/api']], [], [], []],
     'traffic' => [[], ['_controller' => 'App\\Controller\\TrafficDataController::getTrafficData'], [], [['text', '/api/traffic']], [], [], []],
-    'App\Controller\AwesomeApiController::index' => [[], ['_controller' => 'App\\Controller\\AwesomeApiController::index'], [], [['text', '/awesome/api']], [], [], []],
     'App\Controller\TrafficDataController::getTrafficData' => [[], ['_controller' => 'App\\Controller\\TrafficDataController::getTrafficData'], [], [['text', '/api/traffic']], [], [], []],
 ];

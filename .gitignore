@@ -3,7 +3,7 @@
 .env
 traffic-api/.env
 traffic-api/.env.dev
-traffic-api/.env*
+traffic-api/.env.test
 
 /.env.local
 /.env.local.php

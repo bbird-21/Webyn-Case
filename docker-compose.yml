@@ -16,8 +16,8 @@ services:
     volumes:
       - ./traffic-api:/var/www/html
     environment:
-      - APP_ENV=${APP_ENV}
-      # - DATABASE_URL=${DATABASE_URL}
+      APP_ENV: ${APP_ENV}
+      DATABASE_URL: ${DATABASE_URL}
     networks:
       - app
     depends_on:
@@ -36,7 +36,6 @@ services:
   db:
     container_name: db
     image: mysql:latest
-    # entrypoint: ["sh", "start_sql.sh"]
     environment:
       MYSQL_DATABASE: ${MYSQL_DATABASE}
       MYSQL_USER: ${MYSQL_USER}
@@ -44,6 +43,7 @@ services:
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
     volumes:
       - db-data:/var/lib/mysql/
+      - ./init_sql.sh:/docker-entrypoint-initdb.d/init_sql.sh
     networks:
       - app
     ports:
