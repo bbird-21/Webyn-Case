@@ -57,7 +57,7 @@ Follow these simple steps to get the project running locally:
 
 This project uses a `Makefile` to automate common tasks:
 
-*   **`make env_setup`**:
+*   **`make env`**:
     *   This command prepares the necessary environment configuration files.
     *   It copies the template files (`.env.example` and `traffic-api/.env.example`) to `.env` and `traffic-api/.env` respectively (only if they don't already exist).
     *   It automatically appends your local user ID (`HOST_UID`) and group ID (`HOST_GID`) to the root `.env` file. This is crucial for Docker to correctly set file permissions inside the containers, avoiding permission errors with mounted files.
